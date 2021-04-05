@@ -1,0 +1,48 @@
+
+<div class="navbar">
+    <div class="boton">
+        <button type="button" class="btn btn-warning" (click)="changeMenu()">Crear Ubicacion</button>
+    </div>
+    <!-- <div class="boton">
+        <button type="button" class="btn btn-info" >Eliminar Ubicacion</button>
+    </div> -->
+    <div class="boton">
+        <button type="button" class="btn btn-light" (click)="changeMenu()" >Lista de Ubicaciones</button>
+    </div>
+</div>
+<div class="formulario">
+
+    <div class="crear" *ngIf="create">
+        <form>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="nombreUbicacion" aria-label="Username" aria-describedby="basic-addon1" name="nombreUbicacion" [(ngModel)]="nombreUbicacion" required>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="areaUbicacion" aria-label="Username" aria-describedby="basic-addon1" name="areaUbicacion" [(ngModel)]="areaUbicacion" required>
+            </div>  
+            <button type="submit" class="btn btn-primary" (click)="crear()">Crear</button>
+        </form>
+    </div>
+    <div class="lista" *ngIf="list">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th  class="ite" scope="col">#</th>
+                <th  class="ite" scope="col">name</th>
+                <th  class="ite" scope="col">area</th>
+                <th  class="ite" scope="col">eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of locations; let i = index">
+                <td class="ite" >{{i}}</td>
+                <td class="ite" >{{item.name}}</td>
+                <td class="ite" >{{item.area_m2}}</td>
+                <td class="ite"  id="item.id" (click)="eliminar(item.id)" style="align-items: center;  color: rgb(177, 70, 70);"><i class="far fa-trash-alt"></i></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+</div>
